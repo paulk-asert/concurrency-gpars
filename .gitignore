@@ -1,3 +1,5 @@
 *.i??
 target
 build
+out
+.idea
