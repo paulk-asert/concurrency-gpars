@@ -14,8 +14,8 @@ final Thread t2 = Thread.start {
 }
 
 [t1, t2]*.join()
-assert speakers.val as Set ==
-    ['Alex', 'Hilary', 'Ken', 'Guy', 'Ralph'] as Set
+assert speakers.val ==
+    ['Alex', 'Hilary', 'Ken', 'Guy', 'Ralph']
 
 // advanced  cases below:
 
@@ -35,8 +35,8 @@ assert speakers.errors*.class.name ==
     ['java.lang.IllegalArgumentException', 'java.lang.IllegalArgumentException']
 
 speakers.send { throw new IllegalStateException("Oh No") }
-assert speakers.val as Set ==
-    ['Alex', 'Hilary', 'Ken', 'Guy', 'Ralph', 'Jenny', 'Martin'] as Set
+assert speakers.val ==
+    ['Alex', 'Hilary', 'Ken', 'Guy', 'Ralph', 'Jenny', 'Martin']
 assert speakers.errors*.class.name == ['java.lang.IllegalStateException']
 assert log.join('\n') == '''\
 The new speaker lineup is: [Alex, Hilary, Ken, Guy, Ralph, Jenny]
