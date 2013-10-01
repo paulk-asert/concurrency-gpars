@@ -14,7 +14,7 @@ class Philosopher implements Callback {
     int meals = 0
     def forks
     private channels = [new MemoryRequestChannel(), new MemoryRequestChannel()]
-    private req = new ThreadFiber() // or from pool
+    private req = new ThreadFiber()
     private reply = new ThreadFiber()
     private responses = []
     private gotFork = { it instanceof Accepted }

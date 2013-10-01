@@ -1,5 +1,8 @@
 *.i??
+*.eml
 target
 build
 out
 .idea
+.classpath
+.project
