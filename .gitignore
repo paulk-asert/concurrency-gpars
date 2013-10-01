@@ -1,6 +1,7 @@
 *.i??
 *.eml
 target
+bin
 build
 out
 .idea
