@@ -13,8 +13,10 @@ GPars examples
 
 Bonus examples
 * [Jetlang][2] dining philosophers
+* [Gruple][3] dining philosophers
 
 Under construction ... more examples to appear soon ...
 
 [1]: http://gpars.codehaus.org/ "GPars"
 [2]: http://code.google.com/p/jetlang/ "Jetlang"
+[3]: http://gruple.codehaus.org/ "Gruple"
