@@ -11,10 +11,13 @@ GPars examples:
 * Data Parallelism
 * Agents
 * Actors
+* Dataflow
+* Fork join
+* Async Closures
+* Word split example
 
 Bonus examples:
-* [GPars][1] dining philosophers
-* [GPars][1] barber shop (actor, csp, dataflow, concurrent, semaphore)
+* [GPars][1] dining philosophers, primes, barber
 * [Jetlang][2] dining philosophers
 * [Gruple][3] dining philosophers
 * [Akka][4] dining philosophers
