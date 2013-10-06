@@ -21,6 +21,7 @@ Bonus examples:
 * [Jetlang][2] dining philosophers
 * [Gruple][3] dining philosophers
 * [Akka][4] dining philosophers
+* [totallylazy][5] concurrent flatMap
 
 Under construction ... more examples to appear soon ...
 
@@ -28,3 +29,4 @@ Under construction ... more examples to appear soon ...
 [2]: http://code.google.com/p/jetlang/ "Jetlang"
 [3]: http://gruple.codehaus.org/ "Gruple"
 [4]: http://doc.akka.io/docs/akka/2.2.1/java/untyped-actors.html "Akka"
+[5]: https://code.google.com/p/totallylazy/ "totallylazy"
