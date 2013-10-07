@@ -8,7 +8,7 @@ import static java.lang.Math.random
 @Immutable class Customer { Integer id }
 @Immutable class SuccessfulCustomer { Customer customer }
 
-def runSimulation(int numberOfCustomers, int numberOfWaitingSeats,
+def runSimulation(int numCustomers, int numWaitingSeats,
                   Closure hairTrimTime, Closure nextCustomerWaitTime) {
     def barber = reactor { customer ->
         assert customer instanceof Customer
@@ -20,28 +20,27 @@ def runSimulation(int numberOfCustomers, int numberOfWaitingSeats,
     def shop = actor {
         def seatsTaken = 0
         def isOpen = true
-        def customersTurnedAway = 0
-        def customersTrimmed = 0
+        def turnedAway = 0
+        def trimmed = 0
         loop {
             react { message ->
                 switch (message) {
                     case Customer:
-                        if (seatsTaken <= numberOfWaitingSeats) {
+                        if (seatsTaken <= numWaitingSeats) {
                             ++seatsTaken
                             println "Shop : Customer $message.id takes a seat. $seatsTaken in use."
                             barber << message
-                        }
-                        else {
+                        } else {
                             println "Shop : Customer $message.id turned away."
-                            ++customersTurnedAway
+                            ++turnedAway
                         }
                         break
                     case SuccessfulCustomer:
                         --seatsTaken
-                        ++customersTrimmed
+                        ++trimmed
                         println "Shop : Customer $message.customer.id leaving trimmed."
                         if (!isOpen && (seatsTaken == 0)) {
-                            println "\nTrimmed $customersTrimmed and turned away $customersTurnedAway today."
+                            println "\nTrimmed $trimmed and turned away $turnedAway today."
                             stop()
                         }
                         break
@@ -51,7 +50,7 @@ def runSimulation(int numberOfCustomers, int numberOfWaitingSeats,
             }
         }
     }
-    for (number in 0..<numberOfCustomers) {
+    for (number in 0..<numCustomers) {
         sleep nextCustomerWaitTime()
         println "World : Customer $number enters the shop."
         shop << new Customer(number)

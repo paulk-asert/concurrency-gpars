@@ -9,7 +9,7 @@ import static java.lang.Math.random
 @Immutable class CustomerMH { Integer id }
 @Immutable class SuccessfulCustomerMH { CustomerMH customer }
 
-def runSimulation(int numberOfCustomers, int numberOfWaitingSeats,
+def runSimulation(int numCustomers, int numWaitingSeats,
                   Closure hairTrimTime, Closure nextCustomerWaitTime) {
   def barber = reactor { customer ->
     assert customer instanceof CustomerMH
@@ -21,31 +21,31 @@ def runSimulation(int numberOfCustomers, int numberOfWaitingSeats,
   def shop = messageHandler {
     def seatsTaken = 0
     def isOpen = true
-    def customersTurnedAway = 0
-    def customersTrimmed = 0
+    def turnedAway = 0
+    def trimmed = 0
     when { CustomerMH message ->
-      if (seatsTaken <= numberOfWaitingSeats) {
+      if (seatsTaken <= numWaitingSeats) {
         ++seatsTaken
         println "Shop : Customer $message.id takes a seat. $seatsTaken in use."
         barber << message
       } else {
         println "Shop : Customer $message.id turned away."
-        ++customersTurnedAway
+        ++turnedAway
       }
     }
     when { SuccessfulCustomerMH message ->
       --seatsTaken
-      ++customersTrimmed
+      ++trimmed
       println "Shop : Customer $message.customer.id leaving trimmed."
       if (!isOpen && (seatsTaken == 0)) {
-        println "\nTrimmed $customersTrimmed and turned away $customersTurnedAway today."
+        println "\nTrimmed $trimmed and turned away $turnedAway today."
         stop()
       }
     }
     when { String message -> isOpen = false }
   }
 
-  for (number in 0..<numberOfCustomers) {
+  for (number in 0..<numCustomers) {
     sleep nextCustomerWaitTime()
     println "World : Customer $number enters the shop."
     shop << new CustomerMH(number)

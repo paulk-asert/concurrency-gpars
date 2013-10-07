@@ -4,11 +4,11 @@ import static java.lang.Math.random
 
 @Immutable class Customer { Integer id }
 
-def runSimulation(int numberOfCustomers, int numberOfWaitingSeats,
+def runSimulation(int numCustomers, int numWaitingSeats,
                   Closure hairTrimTime, Closure nextCustomerWaitTime) {
-    final waitingChairs = new ArrayBlockingQueue<Customer>(numberOfWaitingSeats)
-    final customersTurnedAway = 0
-    final customersTrimmed = 0
+    final waitingChairs = new ArrayBlockingQueue<Customer>(numWaitingSeats)
+    int turnedAway = 0
+    int trimmed = 0
     final barberThread = new Thread() {
         private working = true
         void stopWork() { working = false }
@@ -19,27 +19,26 @@ def runSimulation(int numberOfCustomers, int numberOfWaitingSeats,
                 println "Barber : Starting Customer $customer.id"
                 sleep hairTrimTime()
                 println "Barber : Finished Customer $customer.id"
-                ++customersTrimmed
+                ++trimmed
                 println "Shop : Customer $customer.id leaving trimmed."
             }
         }
     }
     barberThread.start()
-    for (int i = 0; i < numberOfCustomers; ++i) {
+    for (int i = 0; i < numCustomers; ++i) {
         sleep nextCustomerWaitTime()
         println "World : Customer enters shop."
         final customer = new Customer(i)
         if (waitingChairs.offer(customer)) {
             println "Shop : Customer $customer.id takes a seat. ${waitingChairs.size()} in use."
-        }
-        else {
-            ++customersTurnedAway
+        } else {
+            ++turnedAway
             println "Shop : Customer $customer.id turned away."
         }
     }
     barberThread.stopWork()
     barberThread.join()
-    println "\nTrimmed $customersTrimmed and turned away $customersTurnedAway today."
+    println "\nTrimmed $trimmed and turned away $turnedAway today."
 }
 
 runSimulation(20, 4, { (random() * 60 + 10) as int }, { (random() * 20 + 10) as int })

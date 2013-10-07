@@ -1,10 +1,9 @@
-def isPrime = { x -> ! (2..<x).any { y -> x % y == 0 } }
+import static groovyx.gpars.GParsPool.withPool
 
-groovyx.gpars.GParsPool.withPool {
-    def nums = 2..100
-//    println nums.toList().countParallel{ isPrime(it) }
-//    println nums.countParallel(isPrime)
-//    def result = (2..100).makeConcurrent().count(isPrime)
-    def result = nums.countParallel()//    { println isPrime(it); isPrime(it) }
-    println result
+def isPrime = { x -> ! (2..<x).any { y -> x % y == 0 } }
+def nums = 2..100
+
+withPool {
+    println nums.findAllParallel{ isPrime(it) }
+    assert nums.countParallel{ isPrime(it) } == 25
 }

@@ -14,6 +14,7 @@ GPars examples:
 * Dataflow
 * Fork join
 * Async Closures
+* Software Transactional Memory
 * Word split example
 
 Bonus examples:
@@ -22,6 +23,7 @@ Bonus examples:
 * [Gruple][3] dining philosophers
 * [Akka][4] dining philosophers
 * [totallylazy][5] concurrent flatMap
+* [Clojure][6] stm
 
 Under construction ... more examples to appear soon ...
 
@@ -30,3 +32,4 @@ Under construction ... more examples to appear soon ...
 [3]: http://gruple.codehaus.org/ "Gruple"
 [4]: http://doc.akka.io/docs/akka/2.2.1/java/untyped-actors.html "Akka"
 [5]: https://code.google.com/p/totallylazy/ "totallylazy"
+[6]: http://clojure.org/ "Clojure"

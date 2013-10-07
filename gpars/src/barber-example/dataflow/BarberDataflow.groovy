@@ -9,7 +9,7 @@ import static java.lang.Math.random
 
 @Immutable class Customer { Integer id }
 
-def runSimulation(int numberOfCustomers, int numberOfWaitingSeats,
+def runSimulation(int numCustomers, int numWaitingSeats,
                   Closure hairTrimTime, Closure nextCustomerWaitTime) {
   def worldToShop = new DataflowQueue()
   def shopToBarber = new DataflowQueue()
@@ -27,37 +27,36 @@ def runSimulation(int numberOfCustomers, int numberOfWaitingSeats,
   }
   final shop = task {
     def seatsTaken = 0
-    def customersTurnedAway = 0
-    def customersTrimmed = 0
+    def turnedAway = 0
+    def trimmed = 0
     def isOpen = true
     mainloop:
     while (true) {
       def selector = select(barberToShop, worldToShop)
       def item = selector.select()
       switch (item.index) {
-        case 0: //////// From the Barber ////////
+        case 0: // From the Barber
           assert item.value instanceof Customer
           --seatsTaken
-          ++customersTrimmed
+          ++trimmed
           println "Shop : Customer $item.value.id leaving trimmed."
           if (!isOpen && (seatsTaken == 0)) {
-            println "\nTrimmed $customersTrimmed and turned away $customersTurnedAway today."
+            println "\nTrimmed $trimmed and turned away $turnedAway today."
             shopToBarber << ''
             break mainloop
           }
           break
-        case 1: //////// From the World ////////
+        case 1: // From the World
           if (item.value == '') { isOpen = false }
           else {
             assert item.value instanceof Customer
-            if (seatsTaken < numberOfWaitingSeats) {
+            if (seatsTaken < numWaitingSeats) {
               ++seatsTaken
               println "Shop : Customer $item.value.id takes a seat. $seatsTaken in use."
               shopToBarber << item.value
-            }
-            else {
-              println "Shop : Customer $item.value.id turned away."
-              ++customersTurnedAway
+            } else {
+                println "Shop : Customer $item.value.id turned away."
+              ++turnedAway
             }
           }
           break
@@ -67,7 +66,7 @@ def runSimulation(int numberOfCustomers, int numberOfWaitingSeats,
     }
   }
 
-  for (number in 0..<numberOfCustomers) {
+  for (number in 0..<numCustomers) {
     sleep nextCustomerWaitTime()
     println "World : Customer $number enters the shop."
     worldToShop << new Customer(number)
