@@ -15,16 +15,16 @@ GPars examples:
 * Fork join
 * Async Closures
 * Software Transactional Memory
-* Word split example
+* Word split example (Sequential, ConcurrentHashMap, Dataflow, DataParallelism, ForkJoin, Agent, MapReduce, property test)
 
-Bonus examples:
-* [GPars][1] dining philosophers, primes, barber
+Bonus examples exist for the following libraries:
+* [GPars][1] dining philosophers (Reentrant lock, semaphore, synchronized, stm, csp, actor); primes (parallel, actors, dataflow); barber (semaphore, concurrent, stm, csp, actor, actor message handling)
 * [Jetlang][2] dining philosophers
 * [Gruple][3] dining philosophers
-* [Akka Actors][4] dining philosophers
+* [Akka Actors][4] dining philosophers (actors)
 * [totallylazy][5] concurrent flatMap
-* [Clojure Refs][6] stm
-* [ScalaSTM][7] stm
+* [Clojure Refs][6] account transfer (stm)
+* [ScalaSTM][7] account transfer (stm)
 
 Under construction ... more examples to appear soon ...
 
