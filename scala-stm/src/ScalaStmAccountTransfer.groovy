@@ -1,12 +1,12 @@
-import org.multiverse.api.references.TxnLong
-import static groovyx.gpars.stm.GParsStm.atomic
-import static org.multiverse.api.StmUtils.newTxnLong
+@Grab('org.scala-stm:scala-stm_2.10:0.7')
+import scala.concurrent.stm.*
+import static scala.concurrent.stm.japi.STM.*
 
 class Account {
-    private final TxnLong balance
+    private final Ref.View<Long> balance
 
     Account(long initial) {
-        balance = newTxnLong(initial)
+        balance = newRef(initial)
     }
 
     void setBalance(long newBalance) {

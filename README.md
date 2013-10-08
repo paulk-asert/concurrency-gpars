@@ -24,6 +24,7 @@ Bonus examples:
 * [Akka][4] dining philosophers
 * [totallylazy][5] concurrent flatMap
 * [Clojure][6] stm
+* [ScalaSTM][7] stm
 
 Under construction ... more examples to appear soon ...
 
@@ -32,4 +33,5 @@ Under construction ... more examples to appear soon ...
 [3]: http://gruple.codehaus.org/ "Gruple"
 [4]: http://doc.akka.io/docs/akka/2.2.1/java/untyped-actors.html "Akka"
 [5]: https://code.google.com/p/totallylazy/ "totallylazy"
-[6]: http://clojure.org/ "Clojure"
+[6]: http://clojure.org/refs "Clojure"
+[7]: http://nbronson.github.io/scala-stm/ "ScalaSTM"
