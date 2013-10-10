@@ -18,20 +18,22 @@ GPars examples:
 * Word split example (Sequential, ConcurrentHashMap, Dataflow, DataParallelism, ForkJoin, Agent, MapReduce, property test)
 
 Bonus examples exist for the following libraries:
+* [Groovy][2] built-in improvements over Java (@Synchronized, @Lazy, @WithReadLock, @WithWriteLock, thread and process improvements)
 * [GPars][1] dining philosophers (Reentrant lock, semaphore, synchronized, stm, csp, actor); primes (parallel, actors, dataflow); barber (semaphore, concurrent, stm, csp, actor, actor message handling)
-* [Jetlang][2] dining philosophers
-* [Gruple][3] dining philosophers
-* [Akka Actors][4] dining philosophers (actors)
-* [totallylazy][5] concurrent flatMap
-* [Clojure Refs][6] account transfer (stm)
-* [ScalaSTM][7] account transfer (stm)
+* [Jetlang][3] dining philosophers
+* [Gruple][4] dining philosophers
+* [Akka Actors][5] dining philosophers (actors)
+* [totallylazy][6] concurrent flatMap
+* [Clojure Refs][7] account transfer (stm)
+* [ScalaSTM][8] account transfer (stm)
 
 Under construction ... more examples to appear soon ...
 
 [1]: http://gpars.codehaus.org/ "GPars"
-[2]: http://code.google.com/p/jetlang/ "Jetlang"
-[3]: http://gruple.codehaus.org/ "Gruple"
-[4]: http://doc.akka.io/docs/akka/2.2.1/java/untyped-actors.html "Akka Actors"
-[5]: https://code.google.com/p/totallylazy/ "totallylazy"
-[6]: http://clojure.org/refs "Clojure Refs"
-[7]: http://nbronson.github.io/scala-stm/ "ScalaSTM"
+[2]: http://groovy.codehaus.org/ "Groovy"
+[3]: http://code.google.com/p/jetlang/ "Jetlang"
+[4]: http://gruple.codehaus.org/ "Gruple"
+[5]: http://doc.akka.io/docs/akka/2.2.1/java/untyped-actors.html "Akka Actors"
+[6]: https://code.google.com/p/totallylazy/ "totallylazy"
+[7]: http://clojure.org/refs "Clojure Refs"
+[8]: http://nbronson.github.io/scala-stm/ "ScalaSTM"
