@@ -26,6 +26,7 @@ Bonus examples exist for the following libraries:
 * [totallylazy][6] concurrent flatMap
 * [Clojure Refs][7] account transfer (stm)
 * [ScalaSTM][8] account transfer (stm)
+* [vert.x][9] dining philosophers (actor-like verticles)
 
 Under construction ... more examples to appear soon ...
 
@@ -37,3 +38,4 @@ Under construction ... more examples to appear soon ...
 [6]: https://code.google.com/p/totallylazy/ "totallylazy"
 [7]: http://clojure.org/refs "Clojure Refs"
 [8]: http://nbronson.github.io/scala-stm/ "ScalaSTM"
+[9]: http://vertx.io/ "vert.x"
