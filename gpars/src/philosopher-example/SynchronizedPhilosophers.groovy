@@ -22,12 +22,11 @@ class Philosopher2 extends Thread {
 
     void eat() {
         synchronized (leftFork) {
-            sleep 1000
+            sleep 1200 // 0-2000 gives (low-100%) likelihood of deadlock
             synchronized (rightFork) {
                 println "$name eats..."
                 sleep random.nextInt(1000)
                 meals++
-//                println "$name belches"
             }
         }
     }
