@@ -20,7 +20,7 @@ GPars examples:
 Bonus examples exist for the following libraries:
 * [Groovy][2] built-in improvements over Java (@Synchronized, @Lazy, @WithReadLock, @WithWriteLock, thread and process improvements)
 * [GPars][1]
-  * dining philosophers (Reentrant lock, semaphore, synchronized, stm, csp, actor, JMX deadlock detection, JCarder deadlock detection)
+  * dining philosophers (Reentrant lock, semaphore, synchronized, stm, csp, actor, ThreadMXBean deadlock detection, JCarder deadlock detection)
   * primes (parallel, actors, dataflow)
   * barber (semaphore, concurrent, stm, csp, actor, actor message handling)
 * [Jetlang][3] dining philosophers
