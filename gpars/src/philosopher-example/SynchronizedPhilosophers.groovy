@@ -1,6 +1,6 @@
 import static java.lang.System.currentTimeMillis
 
-class Philosopher2 extends Thread {
+class Philosopher extends Thread {
     def leftFork, rightFork
     private meals = 0
     private random = new Random()
@@ -22,7 +22,7 @@ class Philosopher2 extends Thread {
 
     void eat() {
         synchronized (leftFork) {
-            sleep 1200 // 0-2000 gives (low-100%) likelihood of deadlock
+            sleep 100 // 0-2000 gives (low-100%) likelihood of deadlock
             synchronized (rightFork) {
                 println "$name eats..."
                 sleep random.nextInt(1000)
@@ -43,7 +43,7 @@ class Philosopher2 extends Thread {
 def names = ['socrates', 'plato', 'aristotle', 'descartes', 'nietzsche']
 def forks = names.collect { new Object[0] }
 def philosophers = (0..<names.size()).collect { i ->
-    new Philosopher2(name: names[i], leftFork: forks[i],
+    new Philosopher(name: names[i], leftFork: forks[i],
             rightFork: forks[(i + 1) % names.size()])
 }
 new DeadlockDetector().start()
